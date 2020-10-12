@@ -27,9 +27,9 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * counter 1 is as higher-order function. 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * Counter1 uses a closure, an inner function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
 */
@@ -56,10 +56,10 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
+  let score=Math.round(Math.random()*2);
 
-    /*Code Here*/
-
+  return score;
 }
 
 /* Task 3: finalScore()
@@ -76,11 +76,31 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function inning(){
+  let score=Math.round(Math.random()*2);
 
-  /*Code Here*/
-
+  return score;
 }
+
+
+
+
+function finalScore(callback,inningsCount){
+  let scoreBoard={ 
+      home:0,
+      away:0, 
+  }
+
+  for(let i=1;i<=inningsCount;i++){
+      scoreBoard.home+=callback();
+      scoreBoard.away+=callback();
+  }console.log(scoreBoard);
+  return scoreBoard;
+}
+finalScore(inning,9)
+  
+
+
 
 /* Task 4: 
 
@@ -102,9 +122,19 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
+//function cycles through innings and returns the score for that inning in a string ex "6th inning: awayTeam [7]- homeTeam [11]"...
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+//getInningFunction gets the score
+
+// function getInningScore(team1,team2){
+//   returns ""
+// }
+
+
+function scoreBoard(finalScore, inning, numberOfInnings) {
+    
+  finalScore(inning,numberOfInnings)
+  return `${inning} inning: ${score.home}-${score.away}`
 }
 
-
+ console.log(scoreBoard(finalScore,9,9)) 
